@@ -41,7 +41,7 @@ const AuthPage = ({ params }: { params: ParamsType | Promise<ParamsType> }) => {
   const storeId = unwrappedParams.storeId
   
   // API 기본 URL 설정 (3002 포트 유지)
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3002"
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://192.168.0.78:3002"
 
   // 토큰 관련 함수
   const setTokens = (accessToken: string, refreshToken: string) => {

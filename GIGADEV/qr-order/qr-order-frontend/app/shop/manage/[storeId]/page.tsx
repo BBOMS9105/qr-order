@@ -73,7 +73,7 @@ export default function AdminPage({ params }: { params: AdminPageParams | Promis
   const unwrappedParams = use(params as Promise<AdminPageParams>)
   const storeId = unwrappedParams.storeId
 
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3002"
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://192.168.0.78:3002"
 
   const checkToken = async () => {
     const accessToken = Cookies.get("accessToken")

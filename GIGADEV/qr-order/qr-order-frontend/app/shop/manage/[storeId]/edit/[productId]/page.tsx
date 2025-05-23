@@ -60,7 +60,7 @@ export default function EditProductPage({
   const router = useRouter()
   const { toast } = useToast()
 
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3002"
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://192.168.0.78:3002"
 
   const formatPrice = (value: string | number): string => {
     const numValue = typeof value === 'string' ? parseInt(value.replace(/[^0-9]/g, ""), 10) : value;
