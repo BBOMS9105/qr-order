@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { redirect, useRouter, useSearchParams } from "next/navigation"
 import { useCartStore } from "@/store/cart-store"
 import { useUserStore } from "@/store/user-store"
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const { items } = useCartStore()
   const { role } = useUserStore()
   const router = useRouter()
@@ -36,4 +36,12 @@ export default function CheckoutPage() {
 
   // 페이지가 화면에 표시되지 않도록 null 반환
   return null
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <CheckoutContent />
+    </Suspense>
+  )
 }

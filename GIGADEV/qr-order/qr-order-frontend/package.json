@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:production": "npm run build && npm run start",
+    "ngrok:test": "npm run build && npm run start"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

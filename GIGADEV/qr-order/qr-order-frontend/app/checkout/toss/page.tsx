@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCartStore } from "@/store/cart-store";
 import MobileLayout from "@/components/mobile-layout";
@@ -35,7 +35,7 @@ const generateCustomerKey = () => {
   return key;
 };
 
-export default function TossPaymentPage() {
+function TossPaymentContent() {
   const { items, removeFromCart, updateQuantity, totalPrice, clearCart } = useCartStore();
   const { toast } = useToast();
   const router = useRouter();
@@ -676,7 +676,7 @@ export default function TossPaymentPage() {
       
       console.log("[DEBUG] 백엔드 주문 초기화 요청 데이터:", { storeId, orderItems });
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002'}/payments/initiate`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/payments/initiate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1039,5 +1039,13 @@ export default function TossPaymentPage() {
         </div>
       </MobileLayout>
     </>
+  );
+}
+
+export default function TossPaymentPage() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <TossPaymentContent />
+    </Suspense>
   );
 } 

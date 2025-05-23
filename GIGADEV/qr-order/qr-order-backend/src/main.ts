@@ -5,15 +5,15 @@ import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   // CORS 설정
   app.enableCors({
-    origin: ['http://192.168.0.72:3000', 'http://localhost:3000'], // localhost:3000 추가
+    origin: ['http://192.168.0.72:3000', 'http://localhost:3000', 'http://192.168.0.78:3000'], // localhost:3000 추가
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
   });
-  
+
   // 글로벌 ValidationPipe 설정
   app.useGlobalPipes(
     new ValidationPipe({
@@ -28,7 +28,8 @@ async function bootstrap() {
 
   // 쿠키 파서 미들웨어 추가
   app.use(cookieParser());
-  
+
   await app.listen(3002);
+  console.log('Server is running on port 3002');
 }
 bootstrap();

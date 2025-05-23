@@ -10,9 +10,9 @@ import { useUserStore } from "@/store/user-store"
 import { redirect, useSearchParams } from "next/navigation"
 import MobileLayout from "@/components/mobile-layout"
 import { Input } from "@/components/ui/input"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 
-export default function CartPage() {
+function CartContent() {
   const { items, removeFromCart, updateQuantity, totalPrice } = useCartStore()
   const { role } = useUserStore()
   const [quantities, setQuantities] = useState<Record<string, number>>({})
@@ -163,5 +163,13 @@ export default function CartPage() {
         </div>
       </div>
     </MobileLayout>
+  )
+}
+
+export default function CartPage() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <CartContent />
+    </Suspense>
   )
 }
