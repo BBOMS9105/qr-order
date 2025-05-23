@@ -8,7 +8,14 @@ async function bootstrap() {
 
   // CORS 설정
   app.enableCors({
-    origin: ['http://192.168.0.72:3000', 'http://localhost:3000', 'http://192.168.0.78:3000'], // localhost:3000 추가
+    origin: [
+      'http://192.168.0.72:3000',
+      'http://localhost:3000',
+      'http://192.168.0.78:3000',
+      'https://qr-order-seven.vercel.app/', // 실제 Vercel 도메인
+      /^https:\/\/.*\.vercel\.app$/, // 모든 Vercel 도메인
+      /^https:\/\/.*\.ngrok-free\.app$/, // 모든 ngrok 도메인
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
