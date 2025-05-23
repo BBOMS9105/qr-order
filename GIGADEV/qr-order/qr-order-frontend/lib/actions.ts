@@ -62,9 +62,9 @@ export const getProduct = unstable_cache(
 
 // 특정 스토어의 상품 조회 - 캐시 적용
 export const getProductsByStore = async (storeId: string) => {
-  try {
+  try { 
     // 백엔드 API 서버 주소 (환경변수 또는 하드코딩)
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
     console.log(`[API 호출] 스토어 ID ${storeId}의 상품 조회 중...`);
     
     const response = await fetch(`${apiUrl}/payments/products/store/${storeId}`, {
@@ -164,7 +164,7 @@ export async function addProduct(formData: FormData, storeId?: string) {
     
     // storeId가 제공된 경우 백엔드 API 호출
     if (storeId) {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
       console.log(`[API 호출] 스토어 ID ${storeId}의 상품 추가 중...`);
       
       const productData = {
@@ -238,7 +238,7 @@ export async function updateProduct(formData: FormData, storeId?: string) {
 
     // storeId가 제공된 경우 백엔드 API 호출
     if (storeId) {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
       console.log(`[API 호출] 스토어 ID ${storeId}의 상품 ${id} 수정 중...`);
       
       const productData = {
@@ -307,7 +307,7 @@ export async function deleteProduct(id: string, storeId?: string) {
     // storeId가 제공된 경우 백엔드 API를 호출
     if (storeId) {
       // 백엔드 API 서버 주소
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
       console.log(`[API 호출] 스토어 ID ${storeId}의 상품 ${id} 삭제 중...`);
       
       const response = await fetch(`${apiUrl}/products/${id}?storeId=${storeId}`, {
@@ -427,7 +427,7 @@ export const getOrder = unstable_cache(
       console.log(`[주문 조회] 주문 ID ${id} 조회 중...`);
       
       // 백엔드 API 서버 주소 (환경변수 또는 하드코딩)
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
       
       // 주문 ID에서 storeId 추출 (order_storeId_timestamp_random 형식)
       const orderIdParts = id.split('_');

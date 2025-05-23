@@ -676,7 +676,7 @@ function TossPaymentContent() {
       
       console.log("[DEBUG] 백엔드 주문 초기화 요청 데이터:", { storeId, orderItems });
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/payments/initiate`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/payments/initiate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

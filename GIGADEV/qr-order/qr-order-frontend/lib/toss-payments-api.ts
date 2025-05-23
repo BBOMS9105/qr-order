@@ -49,7 +49,7 @@ export const cancelOrder = async (payload: CancelOrderPayload): Promise<{
     status: string;
   };
 }> => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+  const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
   console.log(`[주문 취소] API URL 확인: ${apiUrl}`);
   console.log(`[주문 취소] 백엔드 직접 호출: ${apiUrl}/payments/cancel`);
   console.log(`[주문 취소] 요청 데이터:`, payload);
@@ -107,7 +107,7 @@ export const confirmPayment = async (payload: ConfirmPaymentPayload): Promise<{
     }>;
   };
 }> => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+  const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://192.168.0.78:3002';
   console.log(`[결제 확인] API URL 확인: ${apiUrl}`);
   console.log(`[결제 확인] 백엔드 직접 호출: ${apiUrl}/payments/confirm`);
   console.log(`[결제 확인] 요청 데이터:`, payload);
